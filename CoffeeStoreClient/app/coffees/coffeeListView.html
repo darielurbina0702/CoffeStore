@@ -1,0 +1,24 @@
+﻿<div id="Listpanel" class="panel panel-default ">
+        <div class="panel-heading"
+         style="font-size:large">
+        Cofee Menu
+    </div>
+
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table">                  
+                    <tbody>
+                        <tr ng-repeat="coffe in coffeeList">
+                           
+                            <td><img ng-src="{{coffe.ImgUrl}}" width="50" height="50" /></td>
+                            <td>{{coffe.Name}}</td>                            
+                            <td>{{coffe.Price | currency}}</td>    
+                            <td><button ui-sref="details({id:coffe.Id})" class="btn btn-primary">Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>       
+    </div>
+</div>

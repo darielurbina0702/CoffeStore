@@ -1,0 +1,55 @@
+﻿body {
+     background-image:url("/img/back.jpg");      
+     background-size:cover;    
+}
+
+#Listpanel {
+    color: whitesmoke;
+    opacity: .75;
+    background-color: black;
+}
+
+
+#detailPanel {
+    color: whitesmoke;
+    opacity: 0.95;
+    background-color: black;
+}
+
+
+
+#contactPanel {
+   opacity:0.95;
+   background-color: black;
+}
+
+#map {
+ width:800px;
+ height:500px; 
+}
+
+#welcomePanel {
+    opacity: .75;
+    background-color:black;
+}
+
+#paragraph pre {
+    opacity: .75;
+    font-size: large;
+    background-color: black;
+    color: white;
+}
+
+#imgCoffee {
+width:265px;
+height:183px;
+}
+
+footer {    
+    text-align:center;
+}
+
+h1 {
+    color: white;
+}
+
