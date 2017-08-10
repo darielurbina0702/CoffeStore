@@ -7,31 +7,49 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using CoffeeStoreWebApi.Models;
 using System.Web.Http.OData;
+using System.Web.Http.Description;
 
 namespace CoffeeStoreWebApi.Controllers
 {
-    [EnableCorsAttribute("http://localhost:65335","*","*")]
+    [EnableCorsAttribute("http://localhost:65335", "*", "*")]
     public class CoffeeStoreController : ApiController
     {
-        // GET: api/CoffeeStore        
-        public IEnumerable<Coffee> Get()
+        // GET: api/CoffeeStore
+        [ResponseType(typeof(Coffee))]
+        public IHttpActionResult Get()
         {
-            CoffeeStoreRepository repo = new CoffeeStoreRepository();
-            return repo.GetCoffees();
+            try
+            {
+                CoffeeStoreRepository repo = new CoffeeStoreRepository();
+                return Ok(repo.GetCoffees());
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
 
         // GET: api/CoffeeStore/5
-        public Coffee Get(int id)
+        [ResponseType(typeof(Coffee))]
+        public IHttpActionResult Get(int id)
         {
-            if (id > 0)
+            try
             {
                 CoffeeStoreRepository repo = new CoffeeStoreRepository();
-                return repo.GetCoffee(id);
+                if (id > 0)
+                {
+                    Coffee c = repo.GetCoffee(id);
+                    if (c != null)
+                        return Ok(c);
+                }
+                return NotFound();
             }
-            else {
-                return null;
+            catch (Exception e)
+            {
+                return InternalServerError(e);
             }
-            
+
+
         }
 
         // POST: api/CoffeeStore
